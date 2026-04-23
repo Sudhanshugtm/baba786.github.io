@@ -1,99 +1,187 @@
-/* Main Stylesheet */
 :root {
-  --primary-color: #0366d6;
-  --secondary-color: #24292e;
-  --text-color: #333;
-  --light-gray: #f6f8fa;
-  --medium-gray: #e1e4e8;
-  --dark-gray: #586069;
+  --bg: #f3efe5;
+  --surface: #fffdf8;
+  --ink: #1e1b16;
+  --muted: #6a6256;
+  --line: #d8cfbe;
+  --accent: #9d3c18;
+  --accent-dark: #7c2f11;
+  --shadow: 0 18px 40px rgba(43, 28, 10, 0.08);
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 32px 20px 48px;
+  background: linear-gradient(180deg, #efe7d7 0%, #f7f3ea 45%, #f3efe5 100%);
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
   line-height: 1.6;
-  color: var(--text-color);
-  max-width: 900px;
+}
+
+.site-header,
+main,
+.site-footer {
+  max-width: 980px;
   margin: 0 auto;
-  padding: 2rem;
 }
 
-header {
-  margin-bottom: 2rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid var(--medium-gray);
+.site-header {
+  display: grid;
+  gap: 20px;
+  padding: 8px 0 28px;
 }
 
-nav {
-  display: flex;
-  justify-content: center;
-  margin: 1rem 0;
+.site-header.compact {
+  padding-bottom: 18px;
 }
 
-nav a {
-  color: var(--primary-color);
-  text-decoration: none;
-  margin: 0 1rem;
-  padding: 0.5rem;
+.eyebrow,
+.section-kicker {
+  margin: 0 0 8px;
+  color: var(--accent);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
-nav a:hover {
-  text-decoration: underline;
-}
-
-h1, h2, h3 {
-  color: var(--secondary-color);
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
 }
 
 h1 {
-  font-size: 2.5rem;
+  margin-bottom: 12px;
+  font-size: clamp(2.4rem, 6vw, 4.8rem);
+  line-height: 0.95;
 }
 
 h2 {
-  font-size: 1.8rem;
-  margin-top: 2rem;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  line-height: 1.1;
 }
 
+h3 {
+  font-size: 1.3rem;
+  line-height: 1.2;
+}
+
+.intro {
+  max-width: 680px;
+  color: var(--muted);
+  font-size: 1.08rem;
+}
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.site-nav a,
 a {
-  color: var(--primary-color);
+  color: var(--accent-dark);
   text-decoration: none;
 }
 
+.site-nav a:hover,
 a:hover {
   text-decoration: underline;
 }
 
-.container {
-  background-color: var(--light-gray);
-  padding: 2rem;
-  border-radius: 5px;
-  margin: 2rem 0;
+.hero-card,
+.panel,
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  box-shadow: var(--shadow);
 }
 
-.highlight {
-  background-color: #fffbdd;
-  padding: 1rem;
-  border-left: 4px solid var(--primary-color);
-  margin: 1rem 0;
+.hero-card {
+  display: grid;
+  gap: 20px;
+  padding: 28px;
+  margin-bottom: 28px;
 }
 
-footer {
-  margin-top: 3rem;
-  padding-top: 1rem;
-  border-top: 1px solid var(--medium-gray);
-  color: var(--dark-gray);
-  text-align: center;
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
-@media (max-width: 768px) {
+.button {
+  display: inline-block;
+  padding: 12px 18px;
+  border-radius: 999px;
+  font-weight: 700;
+}
+
+.button.primary {
+  background: var(--accent);
+  color: #fffaf4;
+}
+
+.button.primary:hover {
+  background: var(--accent-dark);
+  text-decoration: none;
+}
+
+.button.secondary {
+  border: 1px solid var(--line);
+  background: transparent;
+}
+
+.card-grid,
+.two-column {
+  display: grid;
+  gap: 18px;
+  margin: 18px 0 28px;
+}
+
+.card-grid {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.two-column {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.card,
+.panel {
+  padding: 22px;
+}
+
+.stack-gap > *:last-child {
+  margin-bottom: 0;
+}
+
+ul {
+  padding-left: 20px;
+  margin-bottom: 0;
+}
+
+.site-footer {
+  padding-top: 8px;
+  color: var(--muted);
+}
+
+@media (max-width: 640px) {
   body {
-    padding: 1rem;
+    padding: 20px 14px 36px;
   }
-  
-  h1 {
-    font-size: 2rem;
-  }
-  
-  h2 {
-    font-size: 1.5rem;
+
+  .hero-card,
+  .card,
+  .panel {
+    padding: 18px;
+    border-radius: 18px;
   }
 }
